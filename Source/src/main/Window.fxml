@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+			fx:controller="src.main.Controller">
+	
+	<MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+	
+		<Menu text="File">
+		
+			<MenuItem text="New..." onAction="#handleNew"/>
+			<MenuItem text="Open..." onAction="#handleOpenFile"/>
+			<MenuItem text="Save As..." onAction="#handleSaveAs"/>
+			<MenuItem text="Save" onAction="#handleSave"/>
+		
+		</Menu>
+		
+		<Menu text="Edit">
+		
+			<MenuItem text="New Task..." onAction="#handleAddNewTask"/>
+			
+		</Menu>
+	
+	</MenuBar>
+	
+	<!-- Program Header -->
+	
+	<ImageView AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0"
+			   fitWidth="64.0" fitHeight="64.0">
+			   
+		<image>
+		
+			<Image url="file:logo_main.png"/>
+		
+		</image>
+		
+	</ImageView>
+	
+	<Label styleClass="ToDoHeaderLabel" AnchorPane.topAnchor="44.0" 
+	       AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="0.0">
+		ToDo
+	</Label>
+	
+	<Label styleClass="VersionLabel" AnchorPane.topAnchor="60.0" 
+	       AnchorPane.rightAnchor="5.0">
+		Version 0.1
+	</Label>
+	
+	<!-- End Header -->
+	
+	<!-- Container for the Tabs -->
+	
+	<TabPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			 AnchorPane.topAnchor="104.0" AnchorPane.bottomAnchor="0.0" >
+	
+		<tabs>
+
+			<Tab closable="false">
+			
+				<graphic>
+				
+					<ImageView fitWidth="24" fitHeight="24">
+					
+						<Image url="file:task_image.png"/>
+					
+					</ImageView>
+				
+				</graphic>
+			
+				<AnchorPane>
+				
+						
+					<ListView fx:id="currentTaskList" AnchorPane.leftAnchor="0.0"
+							  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+							  AnchorPane.bottomAnchor="50.0">
+					
+					</ListView>
+					
+					<HBox AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+					
+						<Button onAction="#handleMarkCompleted">
+							Mark Complete
+						</Button>
+					
+					</HBox>
+					
+					<HBox AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0" spacing="15.0">
+					
+						<Button styleClass="ImageButton" onAction="#handleAddNewTask">
+							
+							<graphic>
+							
+								<ImageView fitWidth="24" fitHeight="24">
+								
+									<Image url="file:add.png"/>
+								
+								</ImageView>
+							
+							</graphic>
+							
+						</Button>
+						
+						<Button styleClass="ImageButton" onAction="#handleRemoveTask">
+							
+							<graphic>
+							
+								<ImageView fitWidth="24" fitHeight="24">
+								
+									<Image url="file:remove.png"/>
+								
+								</ImageView>
+							
+							</graphic>
+
+						</Button>
+					
+					</HBox>
+				
+				</AnchorPane>
+			
+			</Tab>
+		
+			<Tab closable="false">
+			
+				<graphic>
+				
+					<ImageView fitWidth="24" fitHeight="24">
+					
+						<Image url="file:history_image.png"/>
+					
+					</ImageView>
+				
+				</graphic>
+			
+				<AnchorPane>
+				
+					<ListView fx:id="pastTaskList" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="0.0"
+							  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+					</ListView>
+					
+					<HBox AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+					
+						<Button onAction="#handleMarkUnCompleted">
+							Mark Incomplete
+						</Button>
+					
+					</HBox>
+					
+					<HBox AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+					
+					   <Button styleClass="ImageButton" onAction="#handleRemoveCompletedTask">
+					   
+					       <graphic>
+					       
+					           <ImageView fitWidth="24" fitHeight="24">
+					           
+					               <Image url="file:remove.png"/>
+					           
+					           </ImageView>
+					       
+					       </graphic>
+					   
+					   </Button>
+					
+					</HBox>
+					
+				</AnchorPane>
+			
+			</Tab>
+		
+			<Tab closable="false">
+			
+				<graphic>
+				
+					<ImageView fitWidth="24" fitHeight="24">
+					
+						<Image url="file:calendar_image.png"/>
+					
+					</ImageView>
+				
+				</graphic>
+				
+				<AnchorPane fx:id="calendarPane">
+
+					<Button onAction="#handleRetreatCalendar" AnchorPane.leftAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+						&#60;
+					</Button>
+					
+					<Button onAction="#handleAdvanceCalendar" AnchorPane.rightAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+						&#62;
+					</Button>
+				
+				</AnchorPane>
+			
+			</Tab>
+		
+		</tabs>
+	
+	</TabPane>
+	
+	<!-- End TabPane -->
+	
+</AnchorPane>
+
